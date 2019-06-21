@@ -17,8 +17,8 @@ public class Settings implements ActionListener {
 	JButton btn;
 	
 	public Settings() {
-		List<String> presCol = new ArrayList<>(); // presets will be added to this array
-		presCol.add("--User defined--");
+		List<String> presetList = new ArrayList<>(); // presets will be added to this list
+		presetList.add("--User defined--");
 		
 		//Reading the presets list
 		try (BufferedReader fin = new BufferedReader(new FileReader("Presets/Presets list.txt"))) {
@@ -27,12 +27,12 @@ public class Settings implements ActionListener {
 				str = fin.readLine();
 				//if (str.trim().equals("")) continue;
 				if (str == null) break;
-				presCol.add(str);
+				presetList.add(str);
 			}
 		}
 		catch (IOException exc) {
-			presCol.clear();
-			presCol.add("--User defined--");
+			presetList.clear();
+			presetList.add("--User defined--");
 		}
 		
 		JFrame jfrm = new JFrame("LINGVO Configuration");
@@ -57,7 +57,7 @@ public class Settings implements ActionListener {
 		nList = new JComboBox(nItems);
 		String[] dItems = {"EASY", "NORMAL", "HARD"};
 		dList = new JComboBox(dItems);
-		String[] pItems = presCol.toArray(new String[presCol.size()]); 
+		String[] pItems = presetList.toArray(new String[presetList.size()]); 
 		pList = new JComboBox(pItems);
 		
 		ActionListener actionListenerN = new ActionListener() {

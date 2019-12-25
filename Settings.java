@@ -23,6 +23,7 @@ public class Settings implements ActionListener {
 		//Reading the presets list
 		try (BufferedReader fin = new BufferedReader(new FileReader("Presets/Presets list.txt"))) {
 			String str;
+			
 			for (;;) {
 				str = fin.readLine();
 				//if (str.trim().equals("")) continue;
@@ -109,7 +110,8 @@ public class Settings implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
-		try (DataOutputStream dout = new DataOutputStream(new FileOutputStream("AppData/data1.dat")); BufferedWriter fout = new BufferedWriter(new FileWriter("AppData/data2.dat"))) {
+		try (DataOutputStream dout = new DataOutputStream(new FileOutputStream("AppData/data1.dat")); 
+												BufferedWriter fout = new BufferedWriter(new FileWriter("AppData/data2.dat"))) {
 			dout.writeInt(quantity);
 			dout.writeInt(difficulty);
 			fout.write(preset);
